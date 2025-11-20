@@ -1,10 +1,10 @@
-const API_BASE = "https://crudcrud.com/api/d0deb085bc304001873386f22b2b938b/candystore"; // Replace with your CrudCrud endpoint
+const API_BASE = "https://crudcrud.com/api/d0deb085bc304001873386f22b2b938b/candystore"; 
 
 const form = document.getElementById("candy-form");
 const candyList = document.getElementById("candy-list");
 const status = document.getElementById("status");
 
-// Add candy
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const candy = {
@@ -24,7 +24,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// Load candies
+
 async function loadCandies() {
   try {
     const res = await axios.get(API_BASE);
@@ -34,7 +34,7 @@ async function loadCandies() {
   }
 }
 
-// Render table
+
 function renderCandies(candies) {
   candyList.innerHTML = "";
   candies.forEach(candy => {
@@ -56,7 +56,7 @@ function renderCandies(candies) {
   });
 }
 
-// Buy logic
+
 async function buyCandy(id, currentQty, amount) {
   if (currentQty < amount) {
     setStatus("Not enough stock!", "error");
@@ -76,11 +76,9 @@ async function buyCandy(id, currentQty, amount) {
   }
 }
 
-// Status helper
+
 function setStatus(msg, type) {
   status.textContent = msg;
   status.style.color = type === "error" ? "red" : "green";
 }
-
-// Initial load
 loadCandies();
